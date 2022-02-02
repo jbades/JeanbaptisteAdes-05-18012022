@@ -1,0 +1,10 @@
+Théorie : 
+0/ async I/O
+2/ Callbacks vs. Promises vs. async/await
+3/ Logique asynchronisation (Ajax)
+4/ framework testing js : Jasmine, mocha ? BDD, TDD ?
+1/ Webpack ? jsLind ? node-minify ? Babel ?
+
+Projet :
+1/ Organisatino du js : "Factories" / "Pages" / "utils" => pattern ?
+2/ pourquoi nommer 3 fois async function (alors qu'un seul await)
