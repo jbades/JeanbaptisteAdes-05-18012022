@@ -1,23 +1,17 @@
 {fetch('../../data/photographers.json')
-    .then(function(res) {
-        if (res.ok) {
-        return res.json();
-        }
-    })
+    .then(res => res.json())
     .then(function(value) {
         const myPhotographers = value.photographers;
         let photographerDOM = '';
         myPhotographers.forEach((myPhotographer) => {
-            console.log(myPhotographer);
             photographerDOM += render(myPhotographer);
-            console.log(photographerDOM);
         });
         document.querySelector('.photographer_section').innerHTML = photographerDOM ;
     })
     .catch(function(err) {
-    });
+    })
 }
-    
+
 function render(photographer) {
     return `
         <article>
