@@ -4,6 +4,7 @@ Théorie :
 3/ Logique asynchronisation (Ajax)
 4/ framework testing js : Jasmine, mocha ? BDD, TDD ?
 1/ Webpack ? jsLind ? node-minify ? Babel ?
+5/ Fonctions récursives (quelle fréquence d'utilisation observée ?)
 
 Projet :
 1/ Organisatino du js : "Factories" / "Pages" / "utils" => pattern ?
