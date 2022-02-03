@@ -1,4 +1,4 @@
-fetch('../../data/photographers.json')
+{fetch('../../data/photographers.json')
     .then(function(res) {
         if (res.ok) {
         return res.json();
@@ -6,17 +6,14 @@ fetch('../../data/photographers.json')
     })
     .then(function(value) {
         const myPhotographers = value.photographers;
-        // console.log([myPhotographers]);
-        const photographerSection = document.querySelector('.photographer_section'); 
         myPhotographers.forEach((myPhotographer) => {
-            // console.log(myPhotographer);
             const photographerDOM = render(myPhotographer);
-            photographerSection.appendChild(photographerDOM);
+            document.querySelector('.photographer_section').appendChild(photographerDOM);
         });
-        
     })
     .catch(function(err) {
     });
+}
     
 function render(photographer) {
     const article = document.createElement( 'article' );
@@ -28,24 +25,6 @@ function render(photographer) {
         <div>${photographer.price}€/jour</div>
     `; 
     article.innerHTML = articleContent;
-
-    // const picture = `assets/photographers/` + photographer.portrait;
-    // const img = document.createElement( 'img' );
-    // img.setAttribute("src", picture)
-    // article.appendChild(img);
-    // const h2 = document.createElement( 'h2' );
-    // h2.textContent = photographer.name;
-    // article.appendChild(h2);
-    // const h3 = document.createElement('h3');
-    // h3.textContent = photographer.city;
-    // article.appendChild(h3);
-    // const tagDiv = document.createElement('div');
-    // tagDiv.textContent = photographer.tagline;
-    // article.appendChild(tagDiv);
-    // const priceDiv = document.createElement('div');
-    // priceDiv.textContent = photographer.price + "€/jour";
-    // article.appendChild(priceDiv);
-
     return article;
 }
 
