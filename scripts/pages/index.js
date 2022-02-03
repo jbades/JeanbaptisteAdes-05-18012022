@@ -7,37 +7,47 @@ fetch('../../data/photographers.json')
     .then(function(value) {
         const myPhotographers = value.photographers;
         // console.log([myPhotographers]);
-        const mySection = document.querySelector('.photographer_section'); 
+        const photographerSection = document.querySelector('.photographer_section'); 
         myPhotographers.forEach((myPhotographer) => {
-            console.log(myPhotographer);
-            render(myPhotographer);
+            // console.log(myPhotographer);
+            const photographerDOM = render(myPhotographer);
+            photographerSection.appendChild(photographerDOM);
         });
         
-        function render(input) {
-            const picture = `assets/photographers/` + input.portrait;
-            console.log({picture});            
-            const img = document.createElement( 'img' );
-            img.setAttribute("src", picture)
-            const article = document.createElement( 'article' );
-            article.appendChild(img);
-            const h2 = document.createElement( 'h2' );
-            h2.textContent = input.name;
-            article.appendChild(h2);
-            const h3 = document.createElement('h3');
-            h3.textContent = input.city;
-            article.appendChild(h3);
-            const tagDiv = document.createElement('div');
-            tagDiv.textContent = input.tagline;
-            article.appendChild(tagDiv);
-            const priceDiv = document.createElement('div');
-            priceDiv.textContent = input.price + "€/jour";
-            article.appendChild(priceDiv);
-            mySection.appendChild(article);
-        }
     })
     .catch(function(err) {
     });
     
+function render(photographer) {
+    const article = document.createElement( 'article' );
+    const articleContent = `
+        <img src="assets/photographers/${photographer.portrait}"/>
+        <h2>${photographer.name}</h2>
+        <h3>${photographer.city}</h3>
+        <div>${photographer.tagline}</div>
+        <div>${photographer.price}€/jour</div>
+    `; 
+    article.innerHTML = articleContent;
+
+    // const picture = `assets/photographers/` + photographer.portrait;
+    // const img = document.createElement( 'img' );
+    // img.setAttribute("src", picture)
+    // article.appendChild(img);
+    // const h2 = document.createElement( 'h2' );
+    // h2.textContent = photographer.name;
+    // article.appendChild(h2);
+    // const h3 = document.createElement('h3');
+    // h3.textContent = photographer.city;
+    // article.appendChild(h3);
+    // const tagDiv = document.createElement('div');
+    // tagDiv.textContent = photographer.tagline;
+    // article.appendChild(tagDiv);
+    // const priceDiv = document.createElement('div');
+    // priceDiv.textContent = photographer.price + "€/jour";
+    // article.appendChild(priceDiv);
+
+    return article;
+}
 
 async function getPhotographers() {
     // Penser à remplacer par les données récupérées dans le json
