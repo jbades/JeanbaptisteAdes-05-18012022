@@ -6,26 +6,28 @@
     })
     .then(function(value) {
         const myPhotographers = value.photographers;
+        let photographerDOM = '';
         myPhotographers.forEach((myPhotographer) => {
-            const photographerDOM = render(myPhotographer);
-            document.querySelector('.photographer_section').appendChild(photographerDOM);
+            console.log(myPhotographer);
+            photographerDOM += render(myPhotographer);
+            console.log(photographerDOM);
         });
+        document.querySelector('.photographer_section').innerHTML = photographerDOM ;
     })
     .catch(function(err) {
     });
 }
     
 function render(photographer) {
-    const article = document.createElement( 'article' );
-    const articleContent = `
-        <img src="assets/photographers/${photographer.portrait}"/>
-        <h2>${photographer.name}</h2>
-        <h3>${photographer.city}</h3>
-        <div>${photographer.tagline}</div>
-        <div>${photographer.price}€/jour</div>
-    `; 
-    article.innerHTML = articleContent;
-    return article;
+    return `
+        <article>
+            <img src="assets/photographers/${photographer.portrait}"/>
+            <h2>${photographer.name}</h2>
+            <h3>${photographer.city}</h3>
+            <div>${photographer.tagline}</div>
+            <div>${photographer.price}€/jour</div>
+        </article>
+    `;
 }
 
 async function getPhotographers() {
