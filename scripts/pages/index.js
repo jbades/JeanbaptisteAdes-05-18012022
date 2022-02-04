@@ -1,40 +1,12 @@
 {fetch('../../data/photographers.json')
     .then(res => res.json())
     .then(function(value) {
-        let photographerDOM = '';
-
-        value.photographers.forEach((myPhotographer) => {
-            let photographer = new Photographer(myPhotographer);
-            console.log(photographer);
-            photographerDOM += photographer.render();
-        });
-
-        document.querySelector('.photographer_section').innerHTML = photographerDOM ;
+        let photographerList = new PhotographerList();
+        photographerList.hydrate(value.photographers);
+        photographerList.display();
     })
     .catch(function(err) {
     })
-}
-
-class Photographer {
-    constructor(input) {
-        this.name = input.name;
-        this.city = input.city;
-        this.tagline = input.tagline;
-        this.price = input.price;
-        this.portrait = input.portrait;
-    }
-
-    render() {
-        return `
-            <article>
-                <img src="assets/photographers/${this.portrait}"/>
-                <h2>${this.name}</h2>
-                <h3>${this.city}</h3>
-                <div>${this.tagline}</div>
-                <div>${this.price}€/jour</div>
-            </article>
-        `;
-    }
 }
 
 async function getPhotographers() {

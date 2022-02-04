@@ -9,3 +9,6 @@ Théorie :
 Projet :
 1/ Organisatino du js : "Factories" / "Pages" / "utils" => pattern ?
 2/ pourquoi nommer 3 fois async function (alors qu'un seul await)
+3/ pb : problème avec classes js dans fichier séparé. Pq ?
+4/ Objet : précision sur le "all"
+5/ mise en forme : latence à l'affichage

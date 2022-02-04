@@ -21,7 +21,7 @@ h1 {
 
 .logo {
     height: 50px;
-    margin-left: 100px;
+    margin-left: 50px;
 }
 
 .photographer_section {
@@ -39,12 +39,33 @@ h1 {
     flex-direction: column;
 }
 
+.artistcard__img-wrapper {
+    text-align: center;
+}
+
+.artistcard__h2-wrapper {
+    text-decoration: none;
+}
+
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    margin-bottom: 5px;
+}
+
+.photographer_section article h3 {
+    color: #D3573C;
+    margin: 0 auto;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 100px;
+    object-fit: cover;
+    box-shadow: 0 5px 10px #ccc;
+}
+
+.artistcard__price {
+    color: #999;
 }
