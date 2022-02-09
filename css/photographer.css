@@ -3,6 +3,10 @@
 }
 
 .photograph-header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    padding: 20px;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
