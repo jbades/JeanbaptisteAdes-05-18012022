@@ -6,7 +6,8 @@ fetch('../../data/photographers.json')
 .then((data) => {    
     let chosenPhotographer = data.photographers.find(photographer => photographer.id == photographerID);
     console.log(chosenPhotographer);
-    // let photographer = new List();
+    let photographer = new Photographer(chosenPhotographer);
+    console.log(photographer);
     // photographer.hydrate(data.photographers);
     // photographer.focus();
 })

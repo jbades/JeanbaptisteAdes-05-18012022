@@ -13,23 +13,23 @@ class List {
         document.querySelector('.photographer_section').innerHTML = html ;
     }
     
-    filter (data) {
-        data.forEach((myPhotographer) => {
-            if (myPhotographer.id === currentPhotographerID) {
-                this.all.push(new Photographer(myPhotographer));
-            }
-        });
-    }
+    // filter (data) {
+    //     data.forEach((myPhotographer) => {
+    //         if (myPhotographer.id === currentPhotographerID) {
+    //             this.all.push(new Photographer(myPhotographer));
+    //         }
+    //     });
+    // }
 
-    focus () {
-        let html = '';
+    // focus () {
+    //     let html = '';
         
-        this.all.forEach((photographer) => {
-            html += photographer.renderProfileCard();
-        });
+    //     this.all.forEach((photographer) => {
+    //         html += photographer.renderProfileCard();
+    //     });
         
-        document.querySelector('#main').innerHTML = html ;
-    }
+    //     document.querySelector('#main').innerHTML = html ;
+    // }
     
     hydrate (data) {
         data.forEach((myPhotographer) => {
