@@ -1,19 +1,16 @@
-{fetch('../../data/photographers.json')
-    .then(res => res.json())
-    .then(function(value) {
-        let photographerList = new List();
-        photographerList.hydratePhotographer(value.photographers);
-        photographerList.display();
-    })
-    .catch(function(err) {
-    })
-}
+fetch('../../data/photographers.json')
+.then(res => res.json())
+.then((data) => {
+    let photographers = new List();
+    photographers.hydrate(data.photographers);
+    photographers.display();
+})
 
-document.querySelectorAll("photographer-click").forEach((link) => link.addEventListener("click", () => {
-    link.preventDefault();
-    let currentPhotographerID = link.getAttribute("data-id");
-    console.log(currentPhotographerID);
-}));
+// document.querySelectorAll("photographer-click").forEach((link) => link.addEventListener("click", () => {
+//     link.preventDefault();
+//     let currentPhotographerID = link.getAttribute("data-id");
+//     console.log(currentPhotographerID);
+// }));
 
 async function getPhotographers() {
     // Penser à remplacer par les données récupérées dans le json
