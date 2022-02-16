@@ -1,16 +1,10 @@
 fetch('../../data/photographers.json')
 .then(res => res.json())
 .then((data) => {
-    let photographers = new List();
+    let photographers = new PhotographersList();
     photographers.hydrate(data.photographers);
     photographers.display();
 })
-
-// document.querySelectorAll("photographer-click").forEach((link) => link.addEventListener("click", () => {
-//     link.preventDefault();
-//     let currentPhotographerID = link.getAttribute("data-id");
-//     console.log(currentPhotographerID);
-// }));
 
 async function getPhotographers() {
     // Penser à remplacer par les données récupérées dans le json

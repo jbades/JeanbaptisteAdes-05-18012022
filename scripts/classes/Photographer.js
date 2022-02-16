@@ -9,6 +9,10 @@ class Photographer {
         this.alt = input.alt;
     }
 
+    display() {
+        document.querySelector('#main').innerHTML = this.renderProfileCard();
+    }
+
     renderHomeCard() {
         return `
             <article>
@@ -31,10 +35,10 @@ class Photographer {
                 <div>
                     <h2>${this.name}</h1>
                     <h3>${this.city}</h3>
-                    <div>${this.tagline}</div>
+                    <div class="photographer__tagline">${this.tagline}</div>
                 </div>
                 <button class="contact_button">Contactez-moi</button>
-                <img src="assets/photographers/${this.portrait}"/>
+                <img class="photographer-header__img" src="assets/photographers/${this.portrait}"/>
             </article>
         `;
     }
