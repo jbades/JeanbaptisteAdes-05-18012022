@@ -7,8 +7,14 @@ fetch('../../data/photographers.json')
 .then((data) => {    
     let chosenPhotographer = data.photographers.find(photographer => photographer.id == photographerID);
     let photographer = new Photographer(chosenPhotographer);
-    console.log(photographer);
     photographer.display();
+
+    let medias = data.media.filter(media => media.photographerId == photographerID);
+    let portfolio = new Portfolio();
+    portfolio.hydrate(medias); 
+    console.log(portfolio);
+    portfolio.display();
+
 })
 
 function getID (key) {

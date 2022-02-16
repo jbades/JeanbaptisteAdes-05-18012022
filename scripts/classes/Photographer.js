@@ -31,7 +31,7 @@ class Photographer {
 
     renderProfileCard() {
         return `
-            <article class="photographer-header">
+            <section class="photographer-header">
                 <div>
                     <h2>${this.name}</h1>
                     <h3>${this.city}</h3>
@@ -39,7 +39,7 @@ class Photographer {
                 </div>
                 <button class="contact_button">Contactez-moi</button>
                 <img class="photographer-header__img" src="assets/photographers/${this.portrait}"/>
-            </article>
+            </section>
         `;
     }
 }

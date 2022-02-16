@@ -56,7 +56,7 @@ h1 {
 
 .photographer_section article h3, h3 {
     color: #D3573C;
-    margin: 0 auto;
+    margin: inherit;
 }
 
 .photographer_section article img, .photographer-header__img {
