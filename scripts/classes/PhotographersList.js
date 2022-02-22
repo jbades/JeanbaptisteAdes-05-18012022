@@ -1,4 +1,6 @@
-class PhotographersList {
+import Photographer from "./Photographer.js";
+
+export default class PhotographersList {
     constructor() {
         this.all = [];
     }

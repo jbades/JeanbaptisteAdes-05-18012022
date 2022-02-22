@@ -30,6 +30,10 @@
     flex-flow: row nowrap;
     justify-content: space-between;
 }
+
+.media-container__video {
+    object-fit: cover;
+}
     
 .media-container__img {
     margin: auto;

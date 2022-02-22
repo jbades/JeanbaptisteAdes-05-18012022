@@ -1,4 +1,6 @@
-class Portfolio {
+import Media from './Media.js'
+
+export default class Portfolio {
     constructor() {
         this.all = [];
         // this.photographer = photographer;
@@ -8,7 +10,11 @@ class Portfolio {
         let html = '';
         
         this.all.forEach((media) => {
-            html += media.renderMediaCard();
+            if(media.video) {
+                html += media.renderVideoCard();
+            } else {
+                html += media.renderImgCard();
+            }
         });
 
         let section = document.createElement('section');

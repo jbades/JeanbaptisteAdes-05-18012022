@@ -34,9 +34,10 @@ h1 {
 .photographer_section article {
     justify-self: center;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
 
 .artistcard__img-wrapper {

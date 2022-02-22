@@ -1,5 +1,8 @@
 //Mettre le code JavaScript lié à la page photographer.html
 
+import Photographer from '../classes/Photographer.js';
+import Portfolio from '../classes/Portfolio.js';
+
 const photographerID = getID('id');
 
 fetch('../../data/photographers.json')
@@ -12,7 +15,6 @@ fetch('../../data/photographers.json')
     let medias = data.media.filter(media => media.photographerId == photographerID);
     let portfolio = new Portfolio();
     portfolio.hydrate(medias); 
-    console.log(portfolio);
     portfolio.display();
 
 })
