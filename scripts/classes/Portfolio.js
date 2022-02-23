@@ -21,6 +21,12 @@ export default class Portfolio {
         section.classList.add('portfolio');
         let portfolio = document.querySelector('main').appendChild(section);
         portfolio.innerHTML = html;
+        
+        this.all.forEach((media) => {
+            html += media.listen();
+        });
+
+
 
     }
 
