@@ -1,3 +1,5 @@
+import * as modal from '../utils/contactForm.js'
+
 export default class Photographer {
     constructor(input) {
         this.name = input.name;
@@ -10,7 +12,14 @@ export default class Photographer {
     }
 
     display() {
-        document.querySelector('#main').innerHTML = this.renderProfileCard();
+        let section = document.createElement('section');
+        section.classList.add('profile');
+        let profile = document.querySelector('#main').appendChild(section);
+        profile.innerHTML = this.renderProfileCard();
+    }
+
+    displayPrice() {
+        return this.price;
     }
 
     renderHomeCard() {
@@ -41,5 +50,11 @@ export default class Photographer {
                 <img class="photographer-header__img" src="assets/photographers/${this.portrait}"/>
             </section>
         `;
+    }
+
+    listenButton() {
+        document.querySelector('.contact_button').addEventListener('click', () => {
+            displayModal();
+        });
     }
 }

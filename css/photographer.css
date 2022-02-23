@@ -56,6 +56,19 @@ i#toggleLike {
     margin: auto;
 }
 
+.fixed-summary {
+    position: fixed;
+    background-color: #D3573C;
+    padding: 10px 30px;
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    justify-content: space-between;
+    min-width: 200px;
+    float: revert;
+    bottom: 0;
+    right: 25px;
+}
+
 #contact_modal {
     display: none;
 }    

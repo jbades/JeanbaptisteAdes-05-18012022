@@ -9,17 +9,15 @@ export default class Media {
         this.video = input.video;
         this.hasBeenLiked = false;
         this.heartIcon = `class="icon-heart-empty"`;
-        this.txtWrapper = 
-            `
-                    <div class="media-container__txt-wrapper">
-                        <h3>${this.title}</h3>
-                        <div class="media-container__likes-wrapper">
-                            <div id="heartCount">${this.likes}</div>
-                            <i id="toggleLike" ${this.heartIcon}></i>
+        this.txtWrapper = `<div class="media-container__txt-wrapper">
+                                <h3>${this.title}</h3>
+                                <div class="media-container__likes-wrapper">
+                                    <div id="heartCount">${this.likes}</div>
+                                    <i id="toggleLike" ${this.heartIcon}></i>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            `;
+                    `;
     }
 
     dislike() {
