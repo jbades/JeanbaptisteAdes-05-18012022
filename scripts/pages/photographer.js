@@ -2,7 +2,6 @@
 
 import Photographer from '../classes/Photographer.js';
 import Portfolio from '../classes/Portfolio.js';
-import * as toto from '../utils/contactForm.js';
 
 const photographerID = getID('id');
 
@@ -26,6 +25,7 @@ function filterPhotographer(input) {
     let chosenPhotographer = input.photographers.find(photographer => photographer.id == photographerID);
     let photographer = new Photographer(chosenPhotographer);
     photographer.display();
+    photographer.listenButton();
 
     let span = document.createElement('span');
     let summary = document.querySelector('.fixed-summary').appendChild(span);

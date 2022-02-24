@@ -1,4 +1,4 @@
-import * as modal from '../utils/contactForm.js'
+import {displayModal} from '../utils/contactForm.js'
 
 export default class Photographer {
     constructor(input) {
