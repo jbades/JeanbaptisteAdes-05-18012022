@@ -1,20 +1,30 @@
-import Media from './Media.js'
+import Media from './Media.js';
+import Photographer from './Photographer.js';
 
 export default class Portfolio {
     constructor() {
         this.all = [];
-        this.totalLikes = 0;
-        // this.photographer = photographer;
+        this.totalLikes;
+        this.price;
     }
 
     countTotalLikes() {
+        this.totalLikes = 0;
         this.all.forEach((media) => {
             this.totalLikes += media.likes;
         });
         return this.totalLikes;
     }
 
-    display() {
+    displayPhotographer(data, photographerID) {
+        let chosenPhotographer = data.photographers.find(photographer => photographer.id == photographerID);
+        let photographer = new Photographer(chosenPhotographer);
+        photographer.display();
+        this.price = photographer.price;
+        photographer.listenButton();
+    }
+
+    displayPortfolio() {
         let html = '';
         
         this.all.forEach((media) => {
@@ -29,6 +39,20 @@ export default class Portfolio {
         section.classList.add('portfolio');
         let portfolio = document.querySelector('main').appendChild(section);
         portfolio.innerHTML = html;
+
+    }
+    
+    displaySummary() {
+        let div = document.createElement('div');
+        div.classList.add("fixed-summary");
+        let summary = document.querySelector('main').appendChild(div);
+        summary.innerHTML = `
+            <div>
+                <span id="count">${this.totalLikes}</span>
+                <i id="toggleLike" class="icon-heart"></i>
+            </div>
+            <span id="price">${this.price}€/jour</span>
+        `;        
     }
 
     hydrate (data) {
@@ -37,10 +61,18 @@ export default class Portfolio {
         });
     }
 
-    setTriggers() {
+    listenEvent() {
         let list = '';
         this.all.forEach((media) => {
-            list += media.listen();
+            document.querySelector(`.media-container[data-id="${media.id}"] #toggleLike`).addEventListener("click", () => {
+                if(media.hasBeenLiked) {
+                    media.dislike();
+                } else {
+                    media.like();
+                }
+            this.countTotalLikes();
+            document.querySelector('#count').innerHTML = this.totalLikes;
+            });
         });
     }
 }

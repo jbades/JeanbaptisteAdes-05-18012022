@@ -8,12 +8,11 @@ export default class Media {
         this.img = input.image;
         this.video = input.video;
         this.hasBeenLiked = false;
-        this.heartIcon = `class="icon-heart-empty"`;
         this.txtWrapper = `<div class="media-container__txt-wrapper">
                                 <h3>${this.title}</h3>
                                 <div class="media-container__likes-wrapper">
                                     <div id="heartCount">${this.likes}</div>
-                                    <i id="toggleLike" ${this.heartIcon}></i>
+                                    <i id="toggleLike" class="icon-heart-empty"></i>
                                 </div>
                             </div>
                         </div>
@@ -24,26 +23,14 @@ export default class Media {
         this.likes--;
         this.hasBeenLiked = false;
         this.resetCount();
-        this.heartIcon = `class="icon-heart-empty"`;
-        console.log(this.heartIcon);
+        document.querySelector(`.media-container[data-id="${this.id}"] #toggleLike`).classList.replace('icon-heart', 'icon-heart-empty');
     }
-
+    
     like() {
         this.likes++;
         this.hasBeenLiked = true;
         this.resetCount();
-        this.heartIcon = `class="icon-heart"`;
-        console.log(this.heartIcon);
-    }
-
-    listen() {
-        document.querySelector(`.media-container[data-id="${this.id}"] #toggleLike`).addEventListener("click", () => {
-            if(this.hasBeenLiked) {
-                this.dislike();
-            } else {
-                this.like();
-            }
-        });
+        document.querySelector(`.media-container[data-id="${this.id}"] #toggleLike`).classList.replace('icon-heart-empty', 'icon-heart');
     }
 
     renderImgCard() {

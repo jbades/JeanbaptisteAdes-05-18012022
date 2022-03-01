@@ -18,10 +18,6 @@ export default class Photographer {
         profile.innerHTML = this.renderProfileCard();
     }
 
-    displayPrice() {
-        return this.price;
-    }
-
     renderHomeCard() {
         return `
             <article>
