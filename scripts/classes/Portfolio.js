@@ -1,5 +1,5 @@
-import Media from './Media.js';
 import Photographer from './Photographer.js';
+import MediaFactory from './MediaFactory.js';
 
 export default class Portfolio {
     constructor() {
@@ -25,21 +25,21 @@ export default class Portfolio {
     }
 
     displayPortfolio() {
-        let html = '';
+
+        // let html = '';
         
-        this.all.forEach((media) => {
-            if(media.video) {
-                html += media.renderVideoCard();
-            } else {
-                html += media.renderImgCard();
-            }
-        });
+        // this.all.forEach((media) => {
+        //     if(media.video) {
+        //         html += media.renderVideoCard();
+        //     } else {
+        //         html += media.renderImgCard();
+        //     }
+        // });
 
         let section = document.createElement('section');
         section.classList.add('portfolio');
         let portfolio = document.querySelector('main').appendChild(section);
-        portfolio.innerHTML = html;
-
+        portfolio.innerHTML = factory.test();
     }
     
     displaySummary() {
@@ -57,7 +57,9 @@ export default class Portfolio {
 
     hydrate (data) {
         data.forEach((media) => {
-            this.all.push(new Media(media));
+            let factory = new MediaFactory(media);
+            this.all.push(factory.test());
+            console.log(this.all);
         });
     }
 
