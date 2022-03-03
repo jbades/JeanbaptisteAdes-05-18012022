@@ -12,7 +12,7 @@ export default class PhotographersList {
             html += photographer.renderHomeCard();
         });
         
-        document.querySelector('.photographer_section').innerHTML = html ;
+        document.querySelector('main').innerHTML = html ;
     }
     
     hydrate (data) {

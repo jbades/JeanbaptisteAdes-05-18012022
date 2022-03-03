@@ -17,7 +17,7 @@ export default class Photographer {
 
     renderHomeCard() {
         return `
-            <article>
+            <div>
                 <a href="photographer.html?id=${this.id}" class="artistcard__img-wrapper photographer-click">
                     <img src="assets/photographers/${this.portrait}"/>
                 </a>
@@ -27,7 +27,7 @@ export default class Photographer {
                 <h3>${this.city}</h3>
                 <div>${this.tagline}</div>
                 <div class="artistcard__price">${this.price}€/jour</div>
-            </article>
+            </div>
         `;
     }
 

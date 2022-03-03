@@ -1,3 +1,9 @@
+#photographer-focus {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 0;
+}
+
 .photographer-header {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
