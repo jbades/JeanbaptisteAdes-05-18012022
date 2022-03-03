@@ -11,10 +11,7 @@ fetch('../../data/photographers.json')
     let medias = data.media.filter(media => media.photographerId == photographerID);
     
     let portfolio = new Portfolio(chosenPhotographer);
-    portfolio.hydrate(medias); 
-    portfolio.count();
-    portfolio.display();
-    portfolio.listen();
+    portfolio.start(medias);
 })
 
 function getID (key) {

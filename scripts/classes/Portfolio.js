@@ -29,26 +29,24 @@ export default class Portfolio {
 
     displayGallery() {
         let html = '';
-        let section = document.createElement('section');
-        section.classList.add('portfolio');
-        let portfolio = document.querySelector('main').appendChild(section);
         this.all.forEach((media) => {
             html += media.render();
         } );
-        portfolio.innerHTML = html;
+        document.querySelector('.gallery').innerHTML = html;
 }
     
     displaySummary() {
-        let div = document.createElement('div');
-        div.classList.add("fixed-summary");
-        let summary = document.querySelector('main').appendChild(div);
-        summary.innerHTML = `
+        // let div = document.createElement('div');
+        // div.classList.add("fixed-summary");
+        // let summary = document.querySelector('main').appendChild(div);
+        let summary = `
             <div>
                 <span id="count">${this.totalLikes}</span>
                 <i id="toggleLike" class="icon-heart"></i>
             </div>
             <span id="price">${this.photographer.price}€/jour</span>
         `;        
+        document.querySelector('.summary').innerHTML = summary;
     }
 
     hydrate (data) {

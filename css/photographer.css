@@ -19,7 +19,7 @@
     color: #525252;
 }
 
-.portfolio {
+.gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 50px;
@@ -56,7 +56,7 @@ i#toggleLike {
     margin: auto;
 }
 
-.fixed-summary {
+.summary {
     position: fixed;
     background-color: #D3573C;
     padding: 10px 30px;

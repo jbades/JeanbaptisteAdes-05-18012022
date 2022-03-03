@@ -12,10 +12,7 @@ export default class Photographer {
     }
 
     display() {
-        let section = document.createElement('section');
-        section.classList.add('profile');
-        let profile = document.querySelector('#main').appendChild(section);
-        profile.innerHTML = this.renderProfileCard();
+        document.querySelector('.photographer-header').innerHTML = this.renderProfileCard();
     }
 
     renderHomeCard() {
@@ -36,15 +33,13 @@ export default class Photographer {
 
     renderProfileCard() {
         return `
-            <section class="photographer-header">
-                <div>
-                    <h2>${this.name}</h1>
-                    <h3>${this.city}</h3>
-                    <div class="photographer__tagline">${this.tagline}</div>
-                </div>
-                <button class="contact_button">Contactez-moi</button>
-                <img class="photographer-header__img" src="assets/photographers/${this.portrait}"/>
-            </section>
+            <div>
+                <h2>${this.name}</h1>
+                <h3>${this.city}</h3>
+                <div class="photographer__tagline">${this.tagline}</div>
+            </div>
+            <button class="contact_button">Contactez-moi</button>
+            <img class="photographer-header__img" src="assets/photographers/${this.portrait}"/>
         `;
     }
 
