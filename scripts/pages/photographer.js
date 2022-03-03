@@ -7,19 +7,15 @@ const photographerID = getID('id');
 fetch('../../data/photographers.json')
 .then(res => res.json())
 .then((data) => {    
-    filterMedia(data);
-})
-
-function filterMedia(input) {
-    let medias = input.media.filter(media => media.photographerId == photographerID);
-    let portfolio = new Portfolio();
+    let chosenPhotographer = data.photographers.find(photographer => photographer.id == photographerID);
+    let medias = data.media.filter(media => media.photographerId == photographerID);
+    
+    let portfolio = new Portfolio(chosenPhotographer);
     portfolio.hydrate(medias); 
-    portfolio.displayPhotographer(input, photographerID);
-    portfolio.countTotalLikes();
-    portfolio.displayPortfolio();
-    portfolio.displaySummary();
-    portfolio.listenEvent();
-}
+    portfolio.count();
+    portfolio.display();
+    portfolio.listen();
+})
 
 function getID (key) {
     const urlSearchParams = new URLSearchParams(window.location.search);

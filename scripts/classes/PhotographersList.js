@@ -20,4 +20,9 @@ export default class PhotographersList {
             this.all.push(new Photographer(myPhotographer));
         });
     }
+
+    start(data) {
+        this.hydrate(data);
+        this.display();
+    }
 }

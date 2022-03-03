@@ -2,13 +2,13 @@ import Photographer from './Photographer.js';
 import MediaFactory from './MediaFactory.js';
 
 export default class Portfolio {
-    constructor() {
+    constructor(photographer) {
         this.all = [];
-        this.totalLikes;
-        this.price;
+        this.totalLikes = 0;
+        this.photographer = new Photographer(photographer);
     }
 
-    countTotalLikes() {
+    count() {
         this.totalLikes = 0;
         this.all.forEach((media) => {
             this.totalLikes += media.likes;
@@ -16,31 +16,27 @@ export default class Portfolio {
         return this.totalLikes;
     }
 
-    displayPhotographer(data, photographerID) {
-        let chosenPhotographer = data.photographers.find(photographer => photographer.id == photographerID);
-        let photographer = new Photographer(chosenPhotographer);
-        photographer.display();
-        this.price = photographer.price;
-        photographer.listenButton();
+    display() {
+        this.displayPhotographer();
+        this.displayGallery();
+        this.displaySummary();
     }
 
-    displayPortfolio() {
+    displayPhotographer() {
+        this.photographer.display();
+        this.photographer.listenButton();
+    }
 
-        // let html = '';
-        
-        // this.all.forEach((media) => {
-        //     if(media.video) {
-        //         html += media.renderVideoCard();
-        //     } else {
-        //         html += media.renderImgCard();
-        //     }
-        // });
-
+    displayGallery() {
+        let html = '';
         let section = document.createElement('section');
         section.classList.add('portfolio');
         let portfolio = document.querySelector('main').appendChild(section);
-        portfolio.innerHTML = factory.test();
-    }
+        this.all.forEach((media) => {
+            html += media.render();
+        } );
+        portfolio.innerHTML = html;
+}
     
     displaySummary() {
         let div = document.createElement('div');
@@ -51,30 +47,32 @@ export default class Portfolio {
                 <span id="count">${this.totalLikes}</span>
                 <i id="toggleLike" class="icon-heart"></i>
             </div>
-            <span id="price">${this.price}€/jour</span>
+            <span id="price">${this.photographer.price}€/jour</span>
         `;        
     }
 
     hydrate (data) {
+        let factory = new MediaFactory();
         data.forEach((media) => {
-            let factory = new MediaFactory(media);
-            this.all.push(factory.test());
-            console.log(this.all);
+            this.all.push(factory.build(media));
         });
     }
 
-    listenEvent() {
+    listen() {
         let list = '';
         this.all.forEach((media) => {
             document.querySelector(`.media-container[data-id="${media.id}"] #toggleLike`).addEventListener("click", () => {
-                if(media.hasBeenLiked) {
-                    media.dislike();
-                } else {
-                    media.like();
-                }
-            this.countTotalLikes();
-            document.querySelector('#count').innerHTML = this.totalLikes;
+                media.toogle();
+                this.count();
+                document.querySelector('#count').innerHTML = this.totalLikes;
             });
         });
+    }
+
+    start(data) {
+        this.hydrate(data); 
+        this.count();
+        this.display();
+        this.listen();
     }
 }

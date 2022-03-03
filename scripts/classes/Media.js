@@ -36,4 +36,12 @@ export default class Media {
     resetCount() {
         document.querySelector(`.media-container[data-id="${this.id}"] #heartCount`).innerText = this.likes;
     }
+
+    toogle() {
+        if(this.hasBeenLiked) {
+            this.dislike();
+        } else {
+            this.like();
+        }
+    }
 }

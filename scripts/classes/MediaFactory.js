@@ -2,15 +2,12 @@ import Image from "./Image.js";
 import Video from "./Video.js";
 
 export default class MediaFactory {
-    constructor(item) {
-        this.item = item; 
-    }
 
-    test() {
-        if (this.item.image) {
-            return new Image();
+    build(item) {
+        if (item.image) {
+            return new Image(item);
         } else {
-            return new Video();
+            return new Video(item);
         }
     };
 }
