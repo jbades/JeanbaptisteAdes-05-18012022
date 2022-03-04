@@ -8,6 +8,7 @@ export default class Media {
         this.img = input.image;
         this.video = input.video;
         this.hasBeenLiked = false;
+        this.date = input.date;
         this.txtWrapper = `<div class="media-container__txt-wrapper">
                                 <h3>${this.title}</h3>
                                 <div class="media-container__likes-wrapper">

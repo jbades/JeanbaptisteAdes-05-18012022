@@ -10,7 +10,6 @@
     column-gap: 20px;
     padding: 40px 20px;
     background-color: #FAFAFA;
-    margin: 0 50px;
 }
 
 .photographer-header__img {
@@ -29,7 +28,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 50px;
-    margin: 0 50px;
 }
 
 .media-container__txt-wrapper {
@@ -73,6 +71,41 @@ i#toggleLike {
     float: revert;
     bottom: 0;
     right: 25px;
+}
+
+.sort-section {
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 10px 0;
+}
+
+.sort-section__text {
+    margin-right: 20px;
+}
+
+.sort-button, .sort-list {
+    background-color: #901C1C;
+    color: #fff;
+}
+
+.sort-button__wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 10px;
+}
+
+.sort-button__wrapper i {
+    margin: auto 5px;
+}
+
+.sort-list {
+    display: none;
+}
+
+.sort-entry {
+    border-bottom: solid 1px #fff;
+    margin: auto 5px;
 }
 
 #contact_modal {

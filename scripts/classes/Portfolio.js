@@ -6,6 +6,7 @@ export default class Portfolio {
         this.all = [];
         this.totalLikes = 0;
         this.photographer = new Photographer(photographer);
+        this.sortParam = "Likes";
     }
 
     count() {
@@ -22,19 +23,29 @@ export default class Portfolio {
         this.displaySummary();
     }
 
+    displaySort() {
+        document.querySelector('.sort-button__wrapper .sort-entry').innerHTML = "cacaboudin";
+        console.log(this.all);
+    };
+
+    displayGallery() {
+        let html = '';
+        let gallery = '';
+        gallery = document.querySelector('.gallery');
+        console.log(this.all);
+        let toto = this.sort(this.all);
+        console.log(toto);
+        toto.forEach((media) => {
+            html += media.render();
+        } );
+        gallery.innerHTML = html;
+    }
+    
     displayPhotographer() {
         this.photographer.display();
         this.photographer.listenButton();
     }
 
-    displayGallery() {
-        let html = '';
-        this.all.forEach((media) => {
-            html += media.render();
-        } );
-        document.querySelector('.gallery').innerHTML = html;
-}
-    
     displaySummary() {
         // let div = document.createElement('div');
         // div.classList.add("fixed-summary");
@@ -66,9 +77,14 @@ export default class Portfolio {
             });
         });
     }
+    
+    sort(data) {
+        let sortedList = data.sort((a,b) => b.likes - a.likes);
+        return sortedList;
+    }
 
     start(data) {
-        this.hydrate(data); 
+        this.hydrate(data);
         this.count();
         this.display();
         this.listen();
