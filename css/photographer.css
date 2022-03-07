@@ -83,6 +83,15 @@ i#toggleLike {
     margin-right: 20px;
 }
 
+.sort-list {
+    display: none;
+    flex-flow: column nowrap;
+    position: absolute;
+    left: 139px;
+    cursor: pointer;
+    z-index: 1;
+}
+
 .sort-button, .sort-list {
     background-color: #901C1C;
     color: #fff;
@@ -99,13 +108,13 @@ i#toggleLike {
     margin: auto 5px;
 }
 
-.sort-list {
-    display: none;
-}
-
 .sort-entry {
     border-bottom: solid 1px #fff;
     margin: auto 5px;
+}
+
+.first-entry::after {
+    /* <i class="icon-angle-down"></i> */
 }
 
 #contact_modal {

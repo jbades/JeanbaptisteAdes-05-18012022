@@ -19,23 +19,22 @@ export default class Portfolio {
 
     display() {
         this.displayPhotographer();
+        this.displaySort();
         this.displayGallery();
         this.displaySummary();
     }
 
     displaySort() {
-        document.querySelector('.sort-button__wrapper .sort-entry').innerHTML = "cacaboudin";
-        console.log(this.all);
-    };
-
-    displayGallery() {
+        this.listenSort();
+        this.selectOrder();
+    }
+    
+    displayGallery(order) {
         let html = '';
         let gallery = '';
         gallery = document.querySelector('.gallery');
-        console.log(this.all);
-        let toto = this.sort(this.all);
-        console.log(toto);
-        toto.forEach((media) => {
+        let list = this.sort(this.all, order);
+        list.forEach((media) => {
             html += media.render();
         } );
         gallery.innerHTML = html;
@@ -47,9 +46,6 @@ export default class Portfolio {
     }
 
     displaySummary() {
-        // let div = document.createElement('div');
-        // div.classList.add("fixed-summary");
-        // let summary = document.querySelector('main').appendChild(div);
         let summary = `
             <div>
                 <span id="count">${this.totalLikes}</span>
@@ -78,8 +74,38 @@ export default class Portfolio {
         });
     }
     
-    sort(data) {
-        let sortedList = data.sort((a,b) => b.likes - a.likes);
+    listenSort() {
+        document.querySelector('.sort-button__wrapper').addEventListener('click', () => {
+            document.querySelector('.sort-button').style.display = "none";
+            document.querySelector('.sort-list').style.display = "flex";
+        });
+    };
+
+    selectOrder() {
+        document.querySelectorAll('.sort-select').forEach((entry) => {
+            entry.addEventListener('click', () => {
+                document.querySelector('.sort-list').style.display = "none";
+                let html = document.querySelector('.sort-button__wrapper .sort-entry');
+                html.innerHTML = entry.dataset.id;
+                document.querySelector('.sort-button').style.display = "flex";
+                this.displayGallery(entry.dataset.id);
+            });
+        });
+    }
+
+    sort(data, input) {
+        let sortedList;
+        switch (input) {
+            case 'date':
+                sortedList = data.slice().sort((a,b) => new Date(a.date) - new Date(b.date));
+                break;
+            case 'title':
+                sortedList = data.slice().sort((a,b) => a.title.localeCompare(b.title));
+                console.log(sortedList);
+                break;
+            default:
+                sortedList = data.slice().sort((a,b) => b.likes - a.likes);
+        }
         return sortedList;
     }
 

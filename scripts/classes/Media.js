@@ -13,7 +13,7 @@ export default class Media {
                                 <h3>${this.title}</h3>
                                 <div class="media-container__likes-wrapper">
                                     <div id="heartCount">${this.likes}</div>
-                                    <i id="toggleLike" class="icon-heart-empty"></i>
+                                    <i id="toggleLike" class="far fa-heart"></i>
                                 </div>
                             </div>
                         </div>
@@ -24,14 +24,14 @@ export default class Media {
         this.likes--;
         this.hasBeenLiked = false;
         this.resetCount();
-        document.querySelector(`.media-container[data-id="${this.id}"] #toggleLike`).classList.replace('icon-heart', 'icon-heart-empty');
+        document.querySelector(`.media-container[data-id="${this.id}"] #toggleLike`).classList.replace('fas', 'far');
     }
     
     like() {
         this.likes++;
         this.hasBeenLiked = true;
         this.resetCount();
-        document.querySelector(`.media-container[data-id="${this.id}"] #toggleLike`).classList.replace('icon-heart-empty', 'icon-heart');
+        document.querySelector(`.media-container[data-id="${this.id}"] #toggleLike`).classList.replace('far', 'fas');
     }
     
     resetCount() {
