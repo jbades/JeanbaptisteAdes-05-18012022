@@ -2,7 +2,7 @@
 
 import Portfolio from '../classes/Portfolio.js';
 
-const photographerID = getID('id');
+const photographerID = get('id');
 
 fetch('../../data/photographers.json')
 .then(res => res.json())
@@ -14,7 +14,7 @@ fetch('../../data/photographers.json')
     portfolio.start(medias);
 })
 
-function getID (key) {
+function get (key) {
     const urlSearchParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
     return params[key];

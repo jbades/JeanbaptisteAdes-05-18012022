@@ -1,5 +1,6 @@
 import Photographer from './Photographer.js';
 import MediaFactory from './MediaFactory.js';
+import { closeModal } from '../utils/contactForm.js';
 
 export default class Portfolio {
     constructor(photographer) {
@@ -7,6 +8,11 @@ export default class Portfolio {
         this.totalLikes = 0;
         this.photographer = new Photographer(photographer);
         this.sortParam = "Likes";
+        this.translations = {
+            title: 'Titre',
+            likes: 'Popularité',
+            date: 'Date'
+        }
     }
 
     count() {
@@ -24,20 +30,12 @@ export default class Portfolio {
         this.displaySummary();
     }
 
-    displaySort() {
-        this.listenSort();
-        this.selectOrder();
-    }
-    
-    displayGallery(order) {
+    displayGallery() {
         let html = '';
-        let gallery = '';
-        gallery = document.querySelector('.gallery');
-        let list = this.sort(this.all, order);
-        list.forEach((media) => {
-            html += media.render();
+        this.all.forEach((media) => {
+            html += media.renderMediaCard();
         } );
-        gallery.innerHTML = html;
+        document.querySelector('.gallery').innerHTML = html;
     }
     
     displayPhotographer() {
@@ -45,15 +43,26 @@ export default class Portfolio {
         this.photographer.listenButton();
     }
 
+    displaySort() {
+        // document.querySelector('.sort-button__wrapper').innerHTML = this.translations['likes'];
+        this.listenSort();
+        this.listenForOptions();
+    }
+    
     displaySummary() {
         let summary = `
             <div>
                 <span id="count">${this.totalLikes}</span>
-                <i id="toggleLike" class="icon-heart"></i>
+                <i id="toggleLike" class="fas fa-heart"></i>
             </div>
             <span id="price">${this.photographer.price}€/jour</span>
         `;        
         document.querySelector('.summary').innerHTML = summary;
+    }
+
+    hideOptions() {
+        document.querySelector('.sort-list').style.display = "none";
+        document.querySelector('.sort-button').style.display = "flex";
     }
 
     hydrate (data) {
@@ -63,8 +72,7 @@ export default class Portfolio {
         });
     }
 
-    listen() {
-        let list = '';
+    listenLike() {
         this.all.forEach((media) => {
             document.querySelector(`.media-container[data-id="${media.id}"] #toggleLike`).addEventListener("click", () => {
                 media.toogle();
@@ -73,46 +81,94 @@ export default class Portfolio {
             });
         });
     }
+
+    listenSlider() {
+        this.all.forEach((media) => {
+            document.querySelector(`.media-container[data-id="${media.id}"] .media-container__media`).addEventListener('click', () => {
+                this.displaySlider(media);
+            });
+        });
+    }
+    
+    displaySlider(media) {
+        document.querySelector(`#lightbox-modal`).innerHTML = media.renderMediaLightbox();
+        this.listenCloseModal();
+        this.listenArrowRight(media);
+        document.querySelector(`#lightbox-modal`).style.display = "flex";
+
+    }
+
+    listenArrowRight(media) {
+        document.querySelector('lightbox-modal__left-arrow').addEventListener('click', () => {
+            previousMedia(media);
+            media = this.all[newIndex];
+        });
+    }
+
+    listenCloseModal() {
+        // document.querySelector('lightbox-modal__close').addEventListener('click', () => {
+        //     // closeModal();
+        // });
+    }
     
     listenSort() {
         document.querySelector('.sort-button__wrapper').addEventListener('click', () => {
-            document.querySelector('.sort-button').style.display = "none";
-            document.querySelector('.sort-list').style.display = "flex";
+            this.showOptions();
         });
-    };
+    }
 
-    selectOrder() {
+    listenForOptions() {
         document.querySelectorAll('.sort-select').forEach((entry) => {
             entry.addEventListener('click', () => {
-                document.querySelector('.sort-list').style.display = "none";
-                let html = document.querySelector('.sort-button__wrapper .sort-entry');
-                html.innerHTML = entry.dataset.id;
-                document.querySelector('.sort-button').style.display = "flex";
-                this.displayGallery(entry.dataset.id);
+                let order = entry.dataset.id;
+                this.updateActiveOrder(order);
+                this.hideOptions();
+                this.sort(order);
+                this.displayGallery();
+                this.listenLike();
+                this.listenSlider();
             });
         });
     }
 
-    sort(data, input) {
-        let sortedList;
-        switch (input) {
+    previousMedia(media) {
+        let newIndex;
+        if (this.all.indexOf(media) == 0) {
+            newIndex = this.all.length;
+        } else {
+            newIndex -= this.all.indexOf(media);
+        }
+        return newIndex;
+    }
+
+    showOptions() {
+        document.querySelector('.sort-button').style.display = "none";
+        document.querySelector('.sort-list').style.display = "flex";
+    }
+
+    sort(order) {
+        switch (order) {
             case 'date':
-                sortedList = data.slice().sort((a,b) => new Date(a.date) - new Date(b.date));
+                this.all = this.all.sort((a,b) => new Date(a.date) - new Date(b.date));
                 break;
             case 'title':
-                sortedList = data.slice().sort((a,b) => a.title.localeCompare(b.title));
-                console.log(sortedList);
+                this.all = this.all.sort((a,b) => a.title.localeCompare(b.title));
                 break;
             default:
-                sortedList = data.slice().sort((a,b) => b.likes - a.likes);
+                this.all = this.all.sort((a,b) => b.likes - a.likes);
         }
-        return sortedList;
     }
 
     start(data) {
         this.hydrate(data);
         this.count();
         this.display();
-        this.listen();
+        this.listenLike();
+        this.listenSort();
+        this.listenSlider();
+    }
+
+    updateActiveOrder(order) {
+        document.querySelector('.sort-button__wrapper .sort-entry').innerHTML = this.translations[order];
     }
 }
