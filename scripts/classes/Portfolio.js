@@ -42,6 +42,7 @@ export default class Portfolio {
     displayPhotographer() {
         this.photographer.display();
         this.photographer.listenButton();
+        this.listenCloseModal();
     }
 
     displaySort() {
@@ -111,6 +112,12 @@ export default class Portfolio {
     listenCloseLightbox() {
         document.querySelector('.lightbox-modal__close').addEventListener('click', () => {
             closeLightbox();
+        });
+    }
+
+    listenCloseModal() {
+        document.querySelector('.modal header img').addEventListener('click', () => {
+            closeModal();
         });
     }
     
