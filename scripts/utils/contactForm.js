@@ -7,6 +7,5 @@ export function displayModal() {
 
 export function closeModal() {
     const modal = document.getElementById("contact_modal");
-    console.log("coucou les amis");
     modal.style.display = "none";
 }

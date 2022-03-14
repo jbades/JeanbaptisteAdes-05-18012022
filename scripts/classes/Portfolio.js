@@ -1,6 +1,7 @@
 import Photographer from './Photographer.js';
 import MediaFactory from './MediaFactory.js';
 import { closeModal } from '../utils/contactForm.js';
+import { closeLightbox } from '../utils/lightboxModal.js';
 
 export default class Portfolio {
     constructor(photographer) {
@@ -92,23 +93,25 @@ export default class Portfolio {
     
     displaySlider(media) {
         document.querySelector(`#lightbox-modal`).innerHTML = media.renderMediaLightbox();
-        this.listenCloseModal();
-        this.listenArrowRight(media);
+        document.querySelector('.fa-times').classList.add('lightbox-modal__close');
+        this.listenCloseLightbox();
+        // this.listenArrowRight(media);
         document.querySelector(`#lightbox-modal`).style.display = "flex";
 
     }
 
     listenArrowRight(media) {
         document.querySelector('lightbox-modal__left-arrow').addEventListener('click', () => {
+            console.log("coucou");
             previousMedia(media);
             media = this.all[newIndex];
         });
     }
 
-    listenCloseModal() {
-        // document.querySelector('lightbox-modal__close').addEventListener('click', () => {
-        //     // closeModal();
-        // });
+    listenCloseLightbox() {
+        document.querySelector('.lightbox-modal__close').addEventListener('click', () => {
+            closeLightbox();
+        });
     }
     
     listenSort() {

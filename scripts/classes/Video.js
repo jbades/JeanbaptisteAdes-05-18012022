@@ -32,6 +32,6 @@ export default class Video extends Media {
                 <i class="fas fa-angle-right"></i>
             </div>
             <i class="lightbox-modal__close fas fa-times"></i>
-        `;
+            `;
     }
 }
