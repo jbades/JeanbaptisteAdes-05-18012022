@@ -24,7 +24,7 @@ export default class Video extends Media {
             </div>
             <div class="lightbox-modal__media-wrapper">
                 <video class="lightbox-modal__video" width="100%" height="500px" autoplay loop>
-                    <source scr="assets/images/${this.video}"> 
+                    <source scr="assets/images/${this.video}" type="video/mp4"> 
                 </video>
                 <span class="lightbox-modal__title">${this.title}</span>
             </div>

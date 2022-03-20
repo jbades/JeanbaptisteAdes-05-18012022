@@ -9,7 +9,7 @@ export default class Image extends Media {
         return `
             <div class="media-container" data-id=${this.id}>
                 <div class="media-container__img-wrapper">
-                    <img src="assets/images/${this.img}" class="media-container__media media-container__img"/>
+                    <img src="./assets/images/${this.img}" class="media-container__media media-container__img"/>
                 </div>
             ${this.txtWrapper}
         `;
@@ -17,14 +17,14 @@ export default class Image extends Media {
 
     renderMediaLightbox() {
         return `
-            <div class="lightbox-modal__arrow"  data-id=${this.id}>
+            <div class="lightbox-modal__arrow lightbox-modal__left-arrow"  data-id=${this.id}>
                 <i class="fas fa-angle-left"></i>
             </div>
             <div class="lightbox-modal__media-wrapper">
-                <img scr="assets/images/${this.img}" class="lightbox-modal__img" />
+                <img scr="./assets/images/${this.img}" alt="problem" class="lightbox-modal__img"/>
                 <span class="lightbox-modal__title">${this.title}</span>
             </div>
-            <div class="lightbox-modal__arrow">
+            <div class="lightbox-modal__arrow lightbox-modal__right-arrow">
                 <i class="fas fa-angle-right"></i>
             </div>
             <i class="lightbox-modal__close fas fa-times"></i>

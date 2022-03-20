@@ -146,10 +146,21 @@ i#toggleLike {
     flex-flow: column nowrap;
 }
 
+.lightbox-modal__img {
+    width: 400px;
+    height: 200px;
+    border: solid 1px #000;
+}
+
+.lightbox-modal__video {
+    object-fit: cover;
+}
+
 .lightbox-modal__arrow i {
     color: #901C1C;
     font-size: 60px;
     margin: auto 20px;
+    cursor: pointer;
 }
 
 .lightbox-modal__title {
@@ -162,6 +173,7 @@ i#toggleLike {
     right: 30px;
     font-size: 40px;
     color: #901C1C;
+    cursor: pointer;
 }
 
 #contact_modal {

@@ -1,7 +1,7 @@
 import Photographer from './Photographer.js';
 import MediaFactory from './MediaFactory.js';
 import { closeModal } from '../utils/contactForm.js';
-import { closeLightbox } from '../utils/lightboxModal.js';
+import Slider from './Slider.js';
 
 export default class Portfolio {
     constructor(photographer) {
@@ -46,7 +46,6 @@ export default class Portfolio {
     }
 
     displaySort() {
-        // document.querySelector('.sort-button__wrapper').innerHTML = this.translations['likes'];
         this.listenSort();
         this.listenForOptions();
     }
@@ -85,33 +84,10 @@ export default class Portfolio {
     }
 
     listenSlider() {
-        this.all.forEach((media) => {
+        this.all.forEach((media, index) => {
             document.querySelector(`.media-container[data-id="${media.id}"] .media-container__media`).addEventListener('click', () => {
-                this.displaySlider(media);
+                new Slider(this.all, index);
             });
-        });
-    }
-    
-    displaySlider(media) {
-        document.querySelector(`#lightbox-modal`).innerHTML = media.renderMediaLightbox();
-        document.querySelector('.fa-times').classList.add('lightbox-modal__close');
-        this.listenCloseLightbox();
-        // this.listenArrowRight(media);
-        document.querySelector(`#lightbox-modal`).style.display = "flex";
-
-    }
-
-    listenArrowRight(media) {
-        document.querySelector('lightbox-modal__left-arrow').addEventListener('click', () => {
-            console.log("coucou");
-            previousMedia(media);
-            media = this.all[newIndex];
-        });
-    }
-
-    listenCloseLightbox() {
-        document.querySelector('.lightbox-modal__close').addEventListener('click', () => {
-            closeLightbox();
         });
     }
 
@@ -139,16 +115,6 @@ export default class Portfolio {
                 this.listenSlider();
             });
         });
-    }
-
-    previousMedia(media) {
-        let newIndex;
-        if (this.all.indexOf(media) == 0) {
-            newIndex = this.all.length;
-        } else {
-            newIndex -= this.all.indexOf(media);
-        }
-        return newIndex;
     }
 
     showOptions() {
