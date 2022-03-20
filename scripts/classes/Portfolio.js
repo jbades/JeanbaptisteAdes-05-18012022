@@ -46,6 +46,7 @@ export default class Portfolio {
     }
 
     displaySort() {
+        document.querySelector('.sort-entry').innerHTML = this.translations["likes"];
         this.listenSort();
         this.listenForOptions();
     }
@@ -63,7 +64,7 @@ export default class Portfolio {
 
     hideOptions() {
         document.querySelector('.sort-list').style.display = "none";
-        document.querySelector('.sort-button').style.display = "flex";
+        document.querySelector('.sort-button').style.display = "grid";
     }
 
     hydrate (data) {
@@ -119,7 +120,7 @@ export default class Portfolio {
 
     showOptions() {
         document.querySelector('.sort-button').style.display = "none";
-        document.querySelector('.sort-list').style.display = "flex";
+        document.querySelector('.sort-list').style.display = "grid";
     }
 
     sort(order) {

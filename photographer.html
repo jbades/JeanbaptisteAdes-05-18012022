@@ -9,35 +9,38 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
-      <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
-      </a>
-    </header>
-    <main id="photographer-focus">
-      <section class="photographer-header"></section>
-      <section>
-        <div class="sort-section">
-          <span class="sort-section__text">Trier par :</span>
-          <div class="sort-button">
-            <div class="sort-button__wrapper">
-              <span class="sort-entry"></span>
-              <i class="icon-angle-down"></i>
+    <div class="visible-body">
+      <header class="border-margin">
+        <a href="index.html">
+          <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
+        </a>
+      </header>
+      <main id="photographer-focus"  class="border-margin">
+        <section class="photographer-header"></section>
+        <section>
+          <div class="sort-section">
+            <span class="sort-section__text">Trier par :</span>
+            <div class="sort-button">
+              <div class="sort-button__wrapper">
+                <span class="sort-entry"></span>
+                <i class="fas fa-angle-down"></i>
+              </div>
             </div>
-          </div>
-          <div class="sort-list">
-            <div href="#" class="sort-entry sort-select first-entry" data-id="likes">Popularité</div>
-            <div href="#" class="sort-entry sort-select" data-id="date">Date</div>
-            <div href="#" class="sort-entry sort-select" data-id="title">Titre</div>
-          </div>
-        </div>        
-        <div class="gallery"></section>
-      </section>
-      <aside class="summary"></aside>
-      <!-- <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div> -->
-    </main>
+            <div class="sort-list">
+              <div class="sort-entry sort-select first-entry" data-id="likes">Popularité</div>
+              <i class="fas fa-angle-up"></i>
+              <div class="sort-entry sort-select col-span-2" data-id="date">Date</div>
+              <div class="sort-entry sort-select col-span-2" data-id="title">Titre</div>
+            </div>
+          </div>        
+          <div class="gallery"></section>
+        </section>
+        <aside class="summary"></aside>
+        <!-- <div class="photograph-header">
+          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        </div> -->
+      </main>
+    </div>
     <div id="lightbox-modal"></div>
     <div id="contact_modal">
 			<div class="modal">

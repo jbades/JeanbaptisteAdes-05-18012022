@@ -1,5 +1,9 @@
 @import url("photographer.css");
 
+.border-margin {
+    margin: auto 50px;
+}
+
 body {
     font-family: "DM Sans", sans-serif;
 }
@@ -11,15 +15,11 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 90px;
+    gap: 50px;
 }
 
 h1 {
     color: #901C1C;
-    margin-right: 100px;
-}
-
-.border-margin {
-    margin: auto 25px !important;
 }
 
 .logo {
