@@ -1,5 +1,6 @@
 import Photographer from './Photographer.js';
 import MediaFactory from './MediaFactory.js';
+import { sendData } from '../utils/contactForm.js';
 import { closeModal } from '../utils/contactForm.js';
 import Slider from './Slider.js';
 
@@ -42,6 +43,7 @@ export default class Portfolio {
     displayPhotographer() {
         this.photographer.display();
         this.photographer.listenButton();
+        this.listenSend();
         this.listenCloseModal();
     }
 
@@ -77,7 +79,7 @@ export default class Portfolio {
     listenLike() {
         this.all.forEach((media) => {
             document.querySelector(`.media-container[data-id="${media.id}"] #toggleLike`).addEventListener("click", () => {
-                media.toogle();
+                media.toggle();
                 this.count();
                 document.querySelector('#count').innerHTML = this.totalLikes;
             });
@@ -97,6 +99,13 @@ export default class Portfolio {
             closeModal();
         });
     }
+
+    listenSend() {
+        document.querySelector('.send_button').addEventListener('click', () => {
+            console.log("coucou");
+            sendData();
+        });
+    }
     
     listenSort() {
         document.querySelector('.sort-button__wrapper').addEventListener('click', () => {
@@ -112,6 +121,7 @@ export default class Portfolio {
                 this.hideOptions();
                 this.sort(order);
                 this.displayGallery();
+                console.log(this.all);
                 this.listenLike();
                 this.listenSlider();
             });

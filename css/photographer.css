@@ -208,7 +208,7 @@ i#toggleLike {
     color: #000;
 }
 
-.contact_button {
+.contact_button, .send_button {
     font-size: 17px;
     font-weight: bold;
     color: white;

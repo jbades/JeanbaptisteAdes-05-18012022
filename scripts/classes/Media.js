@@ -8,12 +8,13 @@ export default class Media {
         this.img = input.image;
         this.video = input.video;
         this.hasBeenLiked = false;
+        this.likeIcon = "far";
         this.date = input.date;
         this.txtWrapper = `<div class="media-container__txt-wrapper">
                                 <h3>${this.title}</h3>
                                 <div class="media-container__likes-wrapper">
                                     <div id="heartCount">${this.likes}</div>
-                                    <i id="toggleLike" class="far fa-heart"></i>
+                                    <i id="toggleLike" class="${this.likeIcon} fa-heart"></i>
                                 </div>
                             </div>
                         </div>
@@ -23,6 +24,7 @@ export default class Media {
     dislike() {
         this.likes--;
         this.hasBeenLiked = false;
+        this.likeIcon = "far";
         this.resetCount();
         document.querySelector(`.media-container[data-id="${this.id}"] #toggleLike`).classList.replace('fas', 'far');
     }
@@ -30,6 +32,7 @@ export default class Media {
     like() {
         this.likes++;
         this.hasBeenLiked = true;
+        this.likeIcon = "fas";
         this.resetCount();
         document.querySelector(`.media-container[data-id="${this.id}"] #toggleLike`).classList.replace('far', 'fas');
     }
@@ -38,7 +41,7 @@ export default class Media {
         document.querySelector(`.media-container[data-id="${this.id}"] #heartCount`).innerText = this.likes;
     }
 
-    toogle() {
+    toggle() {
         if(this.hasBeenLiked) {
             this.dislike();
         } else {

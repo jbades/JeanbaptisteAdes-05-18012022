@@ -36,9 +36,6 @@
           <div class="gallery"></section>
         </section>
         <aside class="summary"></aside>
-        <!-- <div class="photograph-header">
-          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-        </div> -->
       </main>
     </div>
     <div id="lightbox-modal"></div>
@@ -50,16 +47,28 @@
         </header>
 				<form>
 					<div>
-						<label>Prénom</label>
-						<input />
-						<label>Nom</label>
-						<input />
-						<label>Email</label>
-						<input />
-						<label>Votre message</label>
-						<input />
+						<label for="firstname">Prénom</label>
+						<input
+              id="firstname"
+              name="firstname"
+            />
+						<label for="lastname">Nom</label>
+						<input
+              id="lastname"
+              name="lastname"
+            />
+						<label for="email">Email</label>
+						<input
+              id="email"
+              name="email"
+            />
+						<label for="message">Votre message</label>
+						<input
+              id="message"
+              name="message"
+            />
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="send_button">Envoyer</button>
 				</form>
 			</div>
 		</div>

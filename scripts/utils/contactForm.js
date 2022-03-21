@@ -8,3 +8,7 @@ export function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
 }
+
+export function sendData() {
+    console.log(document.querySelector('#firstname').value);
+}
