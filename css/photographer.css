@@ -6,6 +6,12 @@ header {
 
 body {
     margin: 0px;
+    max-width: 1280px;
+    margin: auto;
+}
+
+.visible-body {
+    width: 100%;
 }
 
 #photographer-focus {
@@ -17,8 +23,8 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;
-    padding: 40px 20px;
     background-color: #FAFAFA;
+    padding: 25px;
 }
 
 .photographer-header__img {
@@ -35,8 +41,14 @@ body {
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
+    grid-template-columns: repeat(3, 100%) ;
+    max-width: 32%;
+    gap: 20px;
+}
+
+.media-container {
+    height: 255px;
+    width: 100%;
 }
 
 .media-container__txt-wrapper {
@@ -44,29 +56,41 @@ body {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    height: 30px;
 }
 
 .media-container__media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
     cursor: pointer;
+    padding: 0;
+    border-color: transparent;
+    background-color: transparent;
+    height: 225px; 
+    width: 100%;
 }
 
 .media-container__video {
+    min-width: 100%;
+    min-height: 100%;
     object-fit: cover;
 }
 
 .media-container__img {
-    margin: auto;
-    width: 100%;
-    height: 225px;
+    min-width: 100%;
+    min-height: 100%;
     object-fit: cover;
 }
 
 .media-container__likes-wrapper {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: flex-end;
     min-width: 20%;
     margin: auto 0;
+    margin-left: 20px;
 }
 
 i#toggleLike {
@@ -75,6 +99,8 @@ i#toggleLike {
 
 #toggleLike {
     cursor: pointer;
+    background-color: transparent;
+    border-color: transparent;
 }
 
 .summary {
@@ -98,13 +124,13 @@ i#toggleLike {
 }
 
 .sort-section__text {
-    margin-right: 20px;
+    margin: 10px 6px;
 }
 
 .sort-list {
     display: none;
     position: absolute;
-    left: 89px;
+    left: 81px;
     cursor: pointer;
     z-index: 1;
     padding-right: 10px;
@@ -147,6 +173,17 @@ i#toggleLike {
 
 .sort-entry {
     padding: 10px 5px;
+    background-color: transparent;
+    color: #fff;
+    border-top-color: #fff;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    text-align: left
+}
+
+.sort-entry:first-child {
+    border-top-color: transparent;
 }
 
 #lightbox-modal {
@@ -159,6 +196,7 @@ i#toggleLike {
     left: 0;
     flex-flow: row nowrap;
     align-items: center;
+    justify-content: center;
 }
 
 .lightbox-modal__media-wrapper {
@@ -167,20 +205,25 @@ i#toggleLike {
 }
 
 .lightbox-modal__img {
-    width: 400px;
-    height: 200px;
-    border: solid 1px #000;
+    object-fit: cover;
+    height: fit-content;
+    max-width: 80vw;
+    max-height: 90vh;
 }
 
 .lightbox-modal__video {
     object-fit: cover;
+    height: fit-content;
+    max-height: 75vh;
 }
 
-.lightbox-modal__arrow i {
+.lightbox-modal__arrow button {
     color: #901C1C;
     font-size: 60px;
     margin: auto 20px;
     cursor: pointer;
+    background-color: transparent;
+    border-color: transparent;
 }
 
 .lightbox-modal__title {
@@ -194,6 +237,8 @@ i#toggleLike {
     font-size: 40px;
     color: #901C1C;
     cursor: pointer;
+    background-color: transparent;
+    border-color: transparent;
 }
 
 #contact_modal {
@@ -217,20 +262,34 @@ i#toggleLike {
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
-    margin: auto;
     font-family: "DM Sans", sans-serif;
 }
 
+.contact_button {
+    margin: auto;
+}
+
+.send_button {
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 15px;
+}
+
 .modal {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 100%;
+}
+
+.modal__inner-wrapper {
+    padding: 20px;
     border-radius: 5px;
     background-color: #DB8876;
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 50%);
     width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    margin: 20px auto;
-    height: 83vh;
 }
 
 .modal header {
@@ -251,6 +310,11 @@ i#toggleLike {
     margin: inherit;
 }
 
+.modal header button {
+    background-color: transparent;
+    border-color: transparent;
+}
+
 form {
     display: flex;
     width: 100%;
@@ -261,6 +325,7 @@ form {
 form label {
     color: #312E2E;
     font-size: 20px;
+    padding-top: 5px;
 }
 
 form div {
@@ -271,10 +336,14 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+form input, form textarea {
     width: 97%;
     font-size: 27px;
     border: none;
     border-radius: 5px;
     padding: 6px;
+}
+
+form textarea {
+    height: 150px;
 }

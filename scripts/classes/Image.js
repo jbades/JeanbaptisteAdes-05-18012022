@@ -8,26 +8,33 @@ export default class Image extends Media {
     renderMediaCard() {
         return `
             <div class="media-container" data-id=${this.id}>
-                <div class="media-container__img-wrapper">
-                    <img src="./assets/images/${this.img}" class="media-container__media media-container__img"/>
+                <button class="media-container__media media-container__img-wrapper" aria-label="${this.img} - Image grand format">
+                    <img src="./assets/images/${this.img}" class="media-container__img" alt="Image ${this.img}"/>
+                </button>
+                <div class="media-container__txt-wrapper">
+                    <h3>${this.title}</h3>
+                    <div class="media-container__likes-wrapper">
+                        <div id="heartCount">${this.likes}</div>
+                        <button id="toggleLike" class="${this.likeIcon} fa-heart" alt="icon likes" arial-label="likes"></button>
+                    </div>
                 </div>
-            ${this.txtWrapper}
+            </div>        
         `;
     }
 
     renderMediaLightbox() {
         return `
             <div class="lightbox-modal__arrow lightbox-modal__left-arrow"  data-id=${this.id}>
-                <i class="fas fa-angle-left"></i>
+                <button class="fas fa-angle-left"></button>
             </div>
             <div class="lightbox-modal__media-wrapper">
-                <img scr="./assets/images/${this.img}" alt="problem" class="lightbox-modal__img"/>
+                <img src="./assets/images/${this.img}" alt="${this.img}" class="lightbox-modal__img" aria-label="${this.img}"/>
                 <span class="lightbox-modal__title">${this.title}</span>
             </div>
             <div class="lightbox-modal__arrow lightbox-modal__right-arrow">
-                <i class="fas fa-angle-right"></i>
+                <button class="fas fa-angle-right"></button>
             </div>
-            <i class="lightbox-modal__close fas fa-times"></i>
+            <button class="lightbox-modal__close fas fa-times"></button>
             `;
     }
  }

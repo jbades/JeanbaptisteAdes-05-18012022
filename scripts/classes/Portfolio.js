@@ -95,14 +95,14 @@ export default class Portfolio {
     }
 
     listenCloseModal() {
-        document.querySelector('.modal header img').addEventListener('click', () => {
+        document.querySelector('.modal header button').addEventListener('click', () => {
             closeModal();
         });
     }
 
     listenSend() {
-        document.querySelector('.send_button').addEventListener('click', () => {
-            console.log("coucou");
+        document.querySelector('.send_button').addEventListener('click', (e) => {
+            e.preventDefault();
             sendData();
         });
     }
@@ -121,7 +121,6 @@ export default class Portfolio {
                 this.hideOptions();
                 this.sort(order);
                 this.displayGallery();
-                console.log(this.all);
                 this.listenLike();
                 this.listenSlider();
             });

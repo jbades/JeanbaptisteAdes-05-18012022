@@ -18,11 +18,9 @@ export default class Photographer {
     renderHomeCard() {
         return `
             <div>
-                <a href="photographer.html?id=${this.id}" class="artistcard__img-wrapper photographer-click">
-                    <img src="assets/photographers/${this.portrait}"/>
-                </a>
-                <a href="photographer.html?id=${this.id}" class="artistcard__h2-wrapper photographer-click">
-                    <h2>${this.name}</h2>
+                <a href="photographer.html?id=${this.id}" class="artistcard__url-wrapper" arial-label="${this.name}">
+                    <img src="assets/photographers/${this.portrait}" alt="${this.name}" class="artistcard__img photographer-click"/>
+                    <h2 class="artistcard__h2 photographer-click">${this.name}</h2>
                 </a>
                 <h3>${this.city}</h3>
                 <div>${this.tagline}</div>
@@ -38,8 +36,8 @@ export default class Photographer {
                 <h3>${this.city}</h3>
                 <div class="photographer__tagline">${this.tagline}</div>
             </div>
-            <button class="contact_button">Contactez-moi</button>
-            <img class="photographer-header__img" src="assets/photographers/${this.portrait}"/>
+            <button class="contact_button" aria-label="Contactez-moi">Contactez-moi</button>
+            <img class="photographer-header__img" src="assets/photographers/${this.portrait}" alt="${this.name}" arial-label="${this.name}"/>
         `;
     }
 

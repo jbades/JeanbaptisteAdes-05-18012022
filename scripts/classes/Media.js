@@ -10,15 +10,6 @@ export default class Media {
         this.hasBeenLiked = false;
         this.likeIcon = "far";
         this.date = input.date;
-        this.txtWrapper = `<div class="media-container__txt-wrapper">
-                                <h3>${this.title}</h3>
-                                <div class="media-container__likes-wrapper">
-                                    <div id="heartCount">${this.likes}</div>
-                                    <i id="toggleLike" class="${this.likeIcon} fa-heart"></i>
-                                </div>
-                            </div>
-                        </div>
-                    `;
     }
 
     dislike() {

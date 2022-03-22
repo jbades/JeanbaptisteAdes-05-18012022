@@ -32,6 +32,7 @@ export default class Slider {
         this.listenForPrevious();
         this.listenForNext();
         this.listenForClose();
+        this.escape();
     }
 
     next() {
@@ -57,5 +58,14 @@ export default class Slider {
         document.querySelector(`#lightbox-modal`).innerHTML = media.renderMediaLightbox();
         document.querySelector('.fa-times').classList.add('lightbox-modal__close');
         document.querySelector(`#lightbox-modal`).style.display = "flex";
+        document.querySelector('.lightbox-modal__right-arrow button').focus();
+    }
+
+    escape() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") {
+                document.querySelector("#lightbox-modal").style.display = "none";
+            };
+        });
     }
 }

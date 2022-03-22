@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
@@ -22,15 +22,15 @@
             <span class="sort-section__text">Trier par :</span>
             <div class="sort-button">
               <div class="sort-button__wrapper">
-                <span class="sort-entry"></span>
+                <button class="sort-entry" role="button" aria-label="sort" aria-haspopup="listbox" aria-expanded="no"></button>
                 <i class="fas fa-angle-down"></i>
               </div>
             </div>
-            <div class="sort-list">
-              <div class="sort-entry sort-select first-entry" data-id="likes">Popularité</div>
+            <div class="sort-list" role="listbox" aria-label="sort list" aria-activedescendant="likes">
+              <button class="sort-entry sort-select first-entry" data-id="likes" aria-label="likes">Popularité</button>
               <i class="fas fa-angle-up"></i>
-              <div class="sort-entry sort-select col-span-2" data-id="date">Date</div>
-              <div class="sort-entry sort-select col-span-2" data-id="title">Titre</div>
+              <button class="sort-entry sort-select col-span-2" data-id="date" aria-label="date">Date</button>
+              <button class="sort-entry sort-select col-span-2" data-id="title" aria-label="title">Titre</button>
             </div>
           </div>        
           <div class="gallery"></section>
@@ -38,38 +38,43 @@
         <aside class="summary"></aside>
       </main>
     </div>
-    <div id="lightbox-modal"></div>
+    <div id="lightbox-modal" aria-label="Média en grand format"></div>
     <div id="contact_modal">
 			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg"/>
-        </header>
-				<form>
-					<div>
-						<label for="firstname">Prénom</label>
-						<input
-              id="firstname"
-              name="firstname"
-            />
-						<label for="lastname">Nom</label>
-						<input
-              id="lastname"
-              name="lastname"
-            />
-						<label for="email">Email</label>
-						<input
-              id="email"
-              name="email"
-            />
-						<label for="message">Votre message</label>
-						<input
-              id="message"
-              name="message"
-            />
-					</div>
-          <button class="send_button">Envoyer</button>
-				</form>
+        <div class="modal__inner-wrapper">
+          <header>
+            <h2>Contactez-moi</h2>
+            <button>
+              <img src="assets/icons/close.svg"/>
+            </button>
+          </header>
+          <form>
+            <div>
+              <label for="firstname">Prénom</label>
+              <input
+                id="firstname"
+                name="firstname"
+              />
+              <label for="lastname">Nom</label>
+              <input
+                id="lastname"
+                name="lastname"
+              />
+              <label for="email">Email</label>
+              <input
+                id="email"
+                name="email"
+              />
+              <label for="message">Votre message</label>
+              <textarea
+                id="message"
+                name="message"
+              >
+              </textarea>
+            </div>
+            <button class="send_button">Envoyer</button>
+          </form>
+        </div>
 			</div>
 		</div>
     <script src="/scripts/utils/contactForm.js" type="module"></script>
