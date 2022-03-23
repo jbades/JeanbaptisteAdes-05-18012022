@@ -16,8 +16,10 @@ export default class Video extends Media {
                 <div class="media-container__txt-wrapper">
                     <h3>${this.title}</h3>
                     <div class="media-container__likes-wrapper">
-                        <div id="heartCount">${this.likes}</div>
-                        <button id="toggleLike" class="${this.likeIcon} fa-heart" alt="icon likes" arial-label="likes"></button>
+                        <div class="heartCount">${this.likes}</div>
+                        <button class="toggleLike" aria-label="likes">
+                            <i class="${this.likeIcon} fa-heart"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -27,7 +29,7 @@ export default class Video extends Media {
     renderMediaLightbox() {
         return `
             <div class="lightbox-modal__arrow lightbox-modal__left-arrow" data-id=${this.id}>
-                <button class="fas fa-angle-left" arial-label="Média précédent"></button>
+                <button class="fas fa-angle-left" aria-label="Média précédent"></button>
             </div>
             <div class="lightbox-modal__media-wrapper">
                 <video class="lightbox-modal__video" alt="${this.video}" aria-label="${this.video}" width="100%" height="500px" autoplay loop>
@@ -36,9 +38,9 @@ export default class Video extends Media {
                 <span class="lightbox-modal__title">${this.title}</span>
             </div>
             <div  class="lightbox-modal__arrow lightbox-modal__right-arrow">
-                <button class="fas fa-angle-right" arial-label="Média suivant"></button>
+                <button class="fas fa-angle-right" aria-label="Média suivant"></button>
             </div>
-            <button class="lightbox-modal__close fas fa-times" arial-label="Fermer la popup"></button>
+            <button class="lightbox-modal__close fas fa-times" aria-label="Fermer la popup"></button>
             `;
     }
 }

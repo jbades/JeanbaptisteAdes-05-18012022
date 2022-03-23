@@ -93,14 +93,18 @@ body {
     margin-left: 20px;
 }
 
-i#toggleLike {
+i.toggleLike {
     margin: auto;
 }
 
-#toggleLike {
+.toggleLike {
     cursor: pointer;
     background-color: transparent;
     border-color: transparent;
+}
+
+.toggleLike i {
+    color: #901C1C;
 }
 
 .summary {

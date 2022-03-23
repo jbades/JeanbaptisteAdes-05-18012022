@@ -18,7 +18,7 @@ export default class Photographer {
     renderHomeCard() {
         return `
             <div>
-                <a href="photographer.html?id=${this.id}" class="artistcard__url-wrapper" arial-label="${this.name}">
+                <a href="photographer.html?id=${this.id}" class="artistcard__url-wrapper" aria-label="${this.name}">
                     <img src="assets/photographers/${this.portrait}" alt="${this.name}" class="artistcard__img photographer-click"/>
                     <h2 class="artistcard__h2 photographer-click">${this.name}</h2>
                 </a>
@@ -37,7 +37,7 @@ export default class Photographer {
                 <div class="photographer__tagline">${this.tagline}</div>
             </div>
             <button class="contact_button" aria-label="Contactez-moi">Contactez-moi</button>
-            <img class="photographer-header__img" src="assets/photographers/${this.portrait}" alt="${this.name}" arial-label="${this.name}"/>
+            <img class="photographer-header__img" src="assets/photographers/${this.portrait}" alt="${this.name}" aria-label="${this.name}"/>
         `;
     }
 

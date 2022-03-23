@@ -14,8 +14,10 @@ export default class Image extends Media {
                 <div class="media-container__txt-wrapper">
                     <h3>${this.title}</h3>
                     <div class="media-container__likes-wrapper">
-                        <div id="heartCount">${this.likes}</div>
-                        <button id="toggleLike" class="${this.likeIcon} fa-heart" alt="icon likes" arial-label="likes"></button>
+                        <div class="heartCount">${this.likes}</div>
+                        <button class="toggleLike" aria-label="likes">
+                            <i class="${this.likeIcon} fa-heart"></i>
+                        </button>
                     </div>
                 </div>
             </div>        

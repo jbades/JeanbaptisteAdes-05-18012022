@@ -17,7 +17,7 @@ export default class Media {
         this.hasBeenLiked = false;
         this.likeIcon = "far";
         this.resetCount();
-        document.querySelector(`.media-container[data-id="${this.id}"] #toggleLike`).classList.replace('fas', 'far');
+        document.querySelector(`.media-container[data-id="${this.id}"] .toggleLike i`).classList.replace('fas', 'far');
     }
     
     like() {
@@ -25,11 +25,11 @@ export default class Media {
         this.hasBeenLiked = true;
         this.likeIcon = "fas";
         this.resetCount();
-        document.querySelector(`.media-container[data-id="${this.id}"] #toggleLike`).classList.replace('far', 'fas');
+        document.querySelector(`.media-container[data-id="${this.id}"] .toggleLike i`).classList.replace('far', 'fas');
     }
     
     resetCount() {
-        document.querySelector(`.media-container[data-id="${this.id}"] #heartCount`).innerText = this.likes;
+        document.querySelector(`.media-container[data-id="${this.id}"] .heartCount`).innerText = this.likes;
     }
 
     toggle() {

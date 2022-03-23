@@ -78,7 +78,7 @@ export default class Portfolio {
 
     listenLike() {
         this.all.forEach((media) => {
-            document.querySelector(`.media-container[data-id="${media.id}"] #toggleLike`).addEventListener("click", () => {
+            document.querySelector(`.media-container[data-id="${media.id}"] .toggleLike`).addEventListener("click", () => {
                 media.toggle();
                 this.count();
                 document.querySelector('#count').innerHTML = this.totalLikes;
