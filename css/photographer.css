@@ -183,7 +183,8 @@ i.toggleLike {
     border-left-color: transparent;
     border-right-color: transparent;
     border-bottom-color: transparent;
-    text-align: left
+    text-align: left;
+    cursor: pointer;
 }
 
 .sort-entry:first-child {
@@ -271,6 +272,11 @@ i.toggleLike {
 
 .contact_button {
     margin: auto;
+}
+
+.contact_button:hover {
+    background-color: #D3573C;
+    color: #000;
 }
 
 .send_button {
